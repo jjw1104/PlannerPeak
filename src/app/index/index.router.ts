@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { IndexGuard } from '../guards/index.guard';
 import { IndexPage } from './index.page';
+import { IndexGuard } from '../guards/index.guard';
+import { UserDataResolver } from '../resolvers/user-data.resolver';
 
 const routes: Routes = [
   {

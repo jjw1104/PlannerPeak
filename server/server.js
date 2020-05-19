@@ -5,11 +5,9 @@ let bodyParser = require('body-parser');
 let backendPort = 8084;
 
 let mock = {
-  userData: require('./mock/userData'),
-  userDataSignup: require('./mock/userDataSignup'),
-  feedData: require('./mock/feedData'),
-  feedDelete: require('./mock/feedDelete')
-};
+    'userData': require('./mock/userData'),
+    'feedData': require('./mock/feedData')
+}
 
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
@@ -30,71 +28,27 @@ app.use(
   })
 );
 
-app.post('/login', function(req, res, next) {
-  let data = JSON.parse(req.body);
-  let username = data.username;
-  let password = data.password;
+app.post('/login', function(req, res, next){
+    let data = JSON.parse(req.body);
+    let username = data.username;
+    let password = data.password;
 
-  if (username === 'srinivas' && password === '123456') {
-    return res.status(200).json(mock.userData);
-  } else {
-    return res
-      .status(200)
-      .send('{"error":{"text":"Bad request wrong username and password"}}');
-  }
-});
-
-app.post('/signup', function(req, res, next) {
-  let data = JSON.parse(req.body);
-  let username = data.username;
-  let password = data.password;
-  let email = data.email;
-
-  if (
-    username === 'demos' &&
-    password === '123456' &&
-    email === 'demos@9lessons.info'
-  ) {
-    return res.status(200).json(mock.userDataSignup);
-  } else {
-    return res.status(200).send('{"error":{"text":"Duplicate user"}}');
-  }
+    if(username === 'srinivas' && password === '9lessons'){
+      return res.status(200).json(mock.userData);
+    } else {
+       return res.status(200).send('{"error":{"text":"Bad request wrong username and password"}}');
+    }
 });
 
 app.post('/feed', function(req, res, next) {
   let data = JSON.parse(req.body);
   if (data.token && data.user_id === '1') {
-    return res.status(200).json(mock.feedData);
+      return res.status(200).json(mock.feedData);
   } else {
     return res.status(401).send('No Access');
   }
 });
 
-app.post('/feedUpdate', function(req, res, next) {
-  let data = JSON.parse(req.body);
-  let created = Date.now() / 1000;
-  if (data.token && data.user_id === '1' && data.feed) {
-    return res.status(200).send({
-      feedData: {
-        feed_id: '1094',
-        feed: data.feed,
-        user_id_fk: '1',
-        created: created
-      }
-    });
-  } else {
-    return res.status(401).send('No Access');
-  }
-});
-
-app.post('/feedDelete', function(req, res, next) {
-  let data = JSON.parse(req.body);
-  if (data.token && data.user_id === '1') {
-    return res.status(200).json(mock.feedDelete);
-  } else {
-    return res.status(401).send('No Access');
-  }
-});
 
 app.listen(backendPort, function() {
   console.log('Express server listening on port ' + backendPort);
