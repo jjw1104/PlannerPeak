@@ -1,0 +1,9 @@
+{
+  "name": "new-ionic-angular",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular",
+  "id": "4dfa8399"
+}
