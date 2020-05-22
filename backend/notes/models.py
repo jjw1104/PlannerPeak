@@ -9,9 +9,8 @@ from django.db import models
 
 class Note(models.Model):
     content = models.TextField()
-
-class Assignment(models.Model):
     Name = models.TextField()
-    Class = models.TextField()
+    ClassName = models.TextField()
     DueDate = models.DateField()
     Description = models.TextField()
+
