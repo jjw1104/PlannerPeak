@@ -1,14 +1,15 @@
 <template>
   <div id="app">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
     <img alt="Vue logo" src="./assets/omrie.png">
+    <Testing />
+
     {{ notes }}
   </div>
 </template>
 
 <script>
 import axios from 'axios'
-import HelloWorld from './components/HelloWorld.vue'
+import Testing from './components/Testing';
 
 export default {
   name: 'App',
@@ -16,7 +17,7 @@ export default {
     notes: []
   }),
   components: {
-    HelloWorld
+    Testing
   },
   mounted () {
   axios.get('http://localhost:8000/api/notes/').then((response) => {
