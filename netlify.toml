@@ -3,3 +3,7 @@
   publish="dist"
   base = "client"
   
+[[redirects]]
+  from = "/*"
+  to = "/frontend/public/index.html"
+  status = 200
