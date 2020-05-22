@@ -3,7 +3,12 @@
     <img alt="Vue logo" src="./assets/omrie.png">
     <Testing />
 
-    {{ notes[0:].content }}
+    {{ notes[0].content}}
+    {{ notes[1].content}}
+    {{ notes[2].content}}
+    {{ notes[3].content}}
+    {{ notes[4].content}}
+
   </div>
 </template>
 
