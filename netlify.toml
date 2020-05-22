@@ -3,7 +3,3 @@
   publish="dist"
   base = "client"
   
-[[redirects]]
-  from = "/*"
-  to = "/frontend/src/App.vue"
-  status = 200
