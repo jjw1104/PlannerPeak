@@ -5,5 +5,5 @@
   
 [[redirects]]
   from = "/*"
-  to = "/index.html"
+  to = "/frontend/src/components/App.vue"
   status = 200
